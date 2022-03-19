@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingBottom="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp"
-    tools:context="com.zybooks.pizzaparty.MainActivity"
     android:background="@drawable/pizza_background">
 
     <TextView
+        android:id="@+id/num_attend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Number of people?"
+        android:text="@string/num_attend"
         android:textSize="@dimen/label_text_size"
-        android:labelFor="@id/num_attend_edit_text" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="10dp"
+        android:labelFor="@id/num_attend_edit_text"
+        app:layout_constraintBaseline_toBaselineOf="@id/num_attend_edit_text"/>
+
 
     <EditText
         android:id="@+id/num_attend_edit_text"
@@ -26,52 +26,72 @@
         android:inputType="number"
         android:ems="5"
         android:importantForAutofill="no"
-        android:hint="10" />
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/num_attend"
+        android:hint="@string/num_attend_hint" />
+
 
     <TextView
+        android:id="@+id/hungry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="How hungry?"
+        android:text="@string/hungry"
         android:textSize="24sp"
-        android:labelFor="@id/hungry_radio_group" />
+        android:labelFor="@id/hungry_radio_group"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toBottomOf="@id/num_attend_edit_text"/>
 
     <RadioGroup
         android:id="@+id/hungry_radio_group"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/hungry"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="10dp"
         android:orientation="horizontal">
         <RadioButton
             android:id="@+id/light_radio_button"
-            android:text="Light"
+            android:text="@string/light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <RadioButton
             android:id="@+id/medium_radio_button"
-            android:text="Medium"
+            android:text="@string/medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true" />
         <RadioButton
             android:id="@+id/ravenous_radio_button"
-            android:text="Ravenous"
+            android:text="@string/ravenous"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RadioGroup>
 
     <TextView
         android:id="@+id/num_pizzas_text_view"
-        android:text="Total pizzas: ?"
+        android:text="@string/total_pizzas_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:textSize="24sp"/>
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/hungry_radio_group"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="10dp"/>
 
     <Button
+        style="@style/CalcButton"
         android:id="@+id/calc_button"
-        android:text="Calculate"
+        android:text="@string/calculate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:onClick="calculateClick" />
-</LinearLayout>
+        android:onClick="calculateClick"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/num_pizzas_text_view"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
